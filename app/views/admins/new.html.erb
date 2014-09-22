@@ -1,0 +1,32 @@
+<center>
+  <h1>Sign Up</h1>
+  <% if @admin.errors.any? %>
+      <div class="error_messages">
+        <h2>Form is invalid</h2>
+        <ul>
+          <% for message in @admin.errors.full_messages %>
+              <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <%= form_for @admin do |f| %>
+      <p>
+        <%= f.label :email %><br />
+        <%= f.text_field :username %>
+      </p>
+      <p>
+        <%= f.label :password %><br />
+        <%= f.password_field :password %>
+      </p>
+      <p>
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation %>
+      </p>
+      <p class="button"><%= f.submit %></p>
+  <% end %>
+  <%= link_to 'Back', admins_path %>
+</center>
+
+
