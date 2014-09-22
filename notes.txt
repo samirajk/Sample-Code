@@ -1,2 +1,7 @@
 #user login and authentication
 http://railscasts.com/episodes/250-authentication-from-scratch
+
+#Static homePage
+https://github.com/thoughtbot/high_voltage/tree/master
+https://github.com/thoughtbot/high_voltage/issues/96
+

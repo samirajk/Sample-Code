@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 # Use BCrypt
 gem "bcrypt-ruby", :require => "bcrypt"
+# Use BCrypt for static home/landing page
+gem 'high_voltage', '~> 2.2.1'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
