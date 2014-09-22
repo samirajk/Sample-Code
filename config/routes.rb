@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'employer_session/new'
+
+  resources :employers
+
   get 'sessions/new'
 
   resources :admins
@@ -15,6 +19,8 @@ Rails.application.routes.draw do
   get "admin_signup" => "admins#new",:as=>"sign_up"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
+  get "log_out" => "employer_session#destroy", :as => "emp_log_out"
+  get "log_in" => "employer_session#new", :as => "emp_log_in"
   get 'pages/home' => 'high_voltage/pages#show', id: 'home'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

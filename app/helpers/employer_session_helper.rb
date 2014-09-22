@@ -1,0 +1,2 @@
+module EmployerSessionHelper
+end
