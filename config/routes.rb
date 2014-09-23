@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'employersessions/new'
+  get 'employer_session/new'
 
   resources :employers
 
