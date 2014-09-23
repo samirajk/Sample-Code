@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :job_applications
+
+  resources :jobs
+
+  resources :job_seekers
+
   get 'employer_session/new'
 
   resources :employers
@@ -11,9 +17,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root 'admins#new'
+  root 'admins#index'
   #root :module=> :high_voltage, :controller => :pages, :action => :show, :id => 'home'
-  root 'high_voltage/pages#show', id: 'home'
+  #root 'high_voltage/pages#show', id: 'home'
   # Example of regular route:
   #get 'products/:id' => 'catalog#view'
   get "admin_signup" => "admins#new",:as=>"sign_up"
