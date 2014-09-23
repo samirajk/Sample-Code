@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'employer_session/new'
+  get 'employersessions/new'
 
   resources :employers
 
@@ -17,10 +17,11 @@ Rails.application.routes.draw do
   # Example of regular route:
   #get 'products/:id' => 'catalog#view'
   get "admin_signup" => "admins#new",:as=>"sign_up"
+  get "emp_signup" => "employers#new",:as=>"emp_sign_up"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
-  get "log_out" => "employer_session#destroy", :as => "emp_log_out"
-  get "log_in" => "employer_session#new", :as => "emp_log_in"
+  get "emp_log_out" => "employersessions#destroy", :as => "emp_log_out"
+  get "emp_log_in" => "employersessions#new", :as => "emp_log_in"
   get 'pages/home' => 'high_voltage/pages#show', id: 'home'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :admins
   resources :sessions
+  resources :employersessions
   # Example resource route with options:
   #   resources :products do
   #     member do

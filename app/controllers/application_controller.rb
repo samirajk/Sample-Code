@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
   def current_user
-    @current_user ||= Admin.find(session[:user_id]) if session[:user_id]
+    if(!Admin.find(session[:user_id]) if session[:user_id].nil?)
+      @current_user ||= Admin.find(session[:user_id]) if session[:user_id]
+    else if(!Employer.find(session[:user_id]) if session[:user_id].nil?)
+      @current_user ||= Employer.find(session[:user_id]) if session[:user_id]
+    end
+   end
+
   end
 end

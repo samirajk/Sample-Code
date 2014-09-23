@@ -17,9 +17,9 @@ class Employer < ActiveRecord::Base
 
 
   def self.authenticate(email, password)
-    admin = find_by_username(email)
-    if admin && admin.password_hash == BCrypt::Engine.hash_secret(password, admin.password_salt)
-      admin
+    employer = find_by_email(email)
+    if employer && employer.password_hash == BCrypt::Engine.hash_secret(password, employer.password_salt)
+      employer
     else
       nil
     end
