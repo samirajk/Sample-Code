@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coverletter: MyString
+  date_of_application: 2014-09-22 22:03:54
+  status: MyString
+
+two:
+  coverletter: MyString
+  date_of_application: 2014-09-22 22:03:54
+  status: MyString
