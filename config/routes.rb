@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :tags
+
+  resources :categories
+
   resources :job_applications
 
   resources :jobs
