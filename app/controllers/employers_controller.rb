@@ -1,9 +1,13 @@
 class EmployersController < ApplicationController
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
-
+  def current_user
+    @_current_user ||= session[:current_user_id] &&
+        Admin.find(session[:current_user_id])
+  end
   # GET /employers
   # GET /employers.json
   def index
+
     @employers = Employer.all
   end
 
@@ -24,12 +28,13 @@ class EmployersController < ApplicationController
   # POST /employers
   # POST /employers.json
   def create
+
     @employer = Employer.new(employer_params)
     if @employer.save
-      redirect_to root_url , :notice => "Signed up"
+      redirect_to employers_url, notice:  "Employer Signed up"
     else
       render "new"
-    end
+   end
   end
 
   # PATCH/PUT /employers/1

@@ -1,9 +1,13 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
-
+  def current_user
+    @_current_user ||= session[:current_user_id] &&
+        Admin.find(session[:current_user_id])
+  end
   # GET /admins
   # GET /admins.json
   def index
+    session[:current_user_id]=session[:user_id]
     @admins = Admin.all
   end
 
@@ -14,6 +18,7 @@ class AdminsController < ApplicationController
 
   # GET /admins/new
   def new
+
     @admin = Admin.new
   end
 
@@ -26,7 +31,7 @@ class AdminsController < ApplicationController
   def create
     @admin = Admin.new(admin_params)
     if @admin.save
-      redirect_to root_url , :notice => "Signed up"
+     redirect_to admins_url, notice: "Signed up"
     else
       render "new"
     end
@@ -37,7 +42,7 @@ class AdminsController < ApplicationController
   def update
     respond_to do |format|
       if @admin.update(admin_params)
-        format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
+        format.html { redirect_to index, notice: 'Admin was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin }
       else
         format.html { render :edit }

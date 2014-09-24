@@ -10,20 +10,7 @@
   <%= @admin.username %>
 </p>
 
-<p>
-  <strong>Password hash:</strong>
-  <%= @admin.password_hash %>
-</p>
 
-<p>
-  <strong>Password salt:</strong>
-  <%= @admin.password_salt %>
-</p>
-
-<p>
-  <strong>Persistence token:</strong>
-  <%= @admin.persistence_token %>
-</p>
 
 <%= link_to 'Edit', edit_admin_path(@admin) %> |
 <%= link_to 'Back', admins_path %>

@@ -1,4 +1,4 @@
-class Employer < ActiveRecord::Base
+class Jobseeker < ActiveRecord::Base
 
   attr_accessor :password
   before_save :encrypt_password
@@ -15,13 +15,13 @@ class Employer < ActiveRecord::Base
     end
   end
 
+
   def self.authenticate(email, password)
-    employer = find_by_email(email)
-    if employer && employer.password_hash == BCrypt::Engine.hash_secret(password, employer.password_salt)
-      employer
+    jobseeker = find_by_email(email)
+    if jobseeker && jobseeker.password_hash == BCrypt::Engine.hash_secret(password, jobseeker.password_salt)
+      jobseeker
     else
       nil
     end
   end
-
 end

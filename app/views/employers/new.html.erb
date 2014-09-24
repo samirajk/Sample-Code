@@ -1,4 +1,4 @@
-<center>
+
   <h1>Sign Up</h1>
   <% if @employer.errors.any? %>
       <div class="error_messages">
@@ -17,6 +17,10 @@
         <%= f.text_field :company %>
       </p>
       <p>
+        <%= f.label :contact %><br />
+        <%= f.text_field :contact %>
+      </p>
+      <p>
         <%= f.label :email %><br />
         <%= f.text_field :email %>
       </p>
@@ -31,6 +35,6 @@
       <p class="button"><%= f.submit %></p>
   <% end %>
   <%= link_to 'Back', admins_path %>
-</center>
+
 
 

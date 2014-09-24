@@ -15,15 +15,6 @@
   <%= @employer.email %>
 </p>
 
-<p>
-  <strong>Password hash:</strong>
-  <%= @employer.password_hash %>
-</p>
-
-<p>
-  <strong>Password salt:</strong>
-  <%= @employer.password_salt %>
-</p>
 
 <%= link_to 'Edit', edit_employer_path(@employer) %> |
 <%= link_to 'Back', employers_path %>

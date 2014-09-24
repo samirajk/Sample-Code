@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @jobseeker.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @jobseeker.email %>
+</p>
+
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @jobseeker.phonenumber %>
+</p>
+
+<p>
+  <strong>Skills:</strong>
+  <%= @jobseeker.skills %>
+</p>
+
+<p>
+  <strong>Resume:</strong>
+  <%= @jobseeker.resume %>
+</p>
+
+<%= link_to 'Edit', edit_jobseeker_path(@jobseeker) %> |
+<%= link_to 'Back', jobseekers_path %>

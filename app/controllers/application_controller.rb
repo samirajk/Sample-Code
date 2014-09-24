@@ -4,12 +4,21 @@
   protect_from_forgery with: :exception
   helper_method :current_user
   def current_user
+    if session[:user_id].nil?
+      session[:user_id] = 0;
+    end
     if(!Admin.find(session[:user_id]) if session[:user_id].nil?)
       @current_user ||= Admin.find(session[:user_id]) if session[:user_id]
+
     else if(!Employer.find(session[:user_id]) if session[:user_id].nil?)
       @current_user ||= Employer.find(session[:user_id]) if session[:user_id]
-    end
-   end
 
+    else if(!Jobseeker.find(session[:user_id]) if session[:user_id].nil?)
+           @current_user ||= Jobseeker.find(session[:user_id]) if session[:user_id]
+
+    end
+
+    end
   end
-end
+  end
+ end
