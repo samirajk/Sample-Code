@@ -16,6 +16,9 @@ class EmployersController < ApplicationController
   def show
   end
 
+  def homepage
+    
+  end
   # GET /employers/new
   def new
     @employer = Employer.new
