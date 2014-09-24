@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "emp_log_out" => "employersessions#destroy", :as => "emp_log_out"
   get "emp_log_in" => "employersessions#new", :as => "emp_log_in"
+  get "emp_homepage" => "employers#homepage", :as => "emp_home_page"
   get 'pages/home' => 'high_voltage/pages#show', id: 'home'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
   resources :admins
   resources :sessions
   resources :employersessions
+  resources :jobs
   # Example resource route with options:
   #   resources :products do
   #     member do
