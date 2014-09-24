@@ -2,23 +2,22 @@
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :current_user
+  helper_method :current_user, :current_employer
   def current_user
-    if session[:user_id].nil?
-      session[:user_id] = 0;
+    if (session[:user_id].nil?)
+      session[:user_id] = 0 ;
     end
-    if(!Admin.find(session[:user_id]) if session[:user_id].nil?)
+    if(Admin.find_by_id (session[:user_id]))
       @current_user ||= Admin.find(session[:user_id]) if session[:user_id]
+   end
+  end
 
-    else if(!Employer.find(session[:user_id]) if session[:user_id].nil?)
+  def current_employer
+    if (session[:user_id].nil?)
+      session[:user_id] = 0 ;
+    end
+    if(Employer.find_by_id (session[:user_id]))
       @current_user ||= Employer.find(session[:user_id]) if session[:user_id]
-
-    else if(!Jobseeker.find(session[:user_id]) if session[:user_id].nil?)
-           @current_user ||= Jobseeker.find(session[:user_id]) if session[:user_id]
-
-    end
-
     end
   end
-  end
- end
+end

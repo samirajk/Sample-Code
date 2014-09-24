@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-
+  layout 'employer'
   # GET /jobs
   # GET /jobs.json
   def index
@@ -12,6 +12,9 @@ class JobsController < ApplicationController
   def show
   end
 
+  def jobsbyemployer
+    @jobs = Job.where("employer_id = ?", session[:user_id])
+  end
   # GET /jobs/new
   def new
     @job = Job.new
@@ -30,6 +33,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.tags_id = job_params[:tags_id].slice(1,job_params[:tags_id].length).join(",")
+    @job.employer_id = session[:user_id]
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
@@ -44,8 +48,14 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
+
+    tp = job_params
+    tp[:tags_id] = job_params[:tags_id].slice(1,job_params[:tags_id].length).join(",")
+    tp[:employer_id] = session[:user_id]
+
+
     respond_to do |format|
-      if @job.update(job_params)
+      if @job.update(tp)
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
@@ -73,6 +83,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :application_deadline ,:category_id, tags_id: [])
+      params.require(:job).permit(:title, :description, :application_deadline, :employer_id ,:category_id, tags_id: [])
     end
 end
