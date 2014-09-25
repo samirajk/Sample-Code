@@ -17,12 +17,16 @@
   </div>
   <div class="field">
     <%= f.label :dateofapplication %><br>
-    <%= f.text_field :dateofapplication %>
+    <%= f.datetime_select :dateofapplication %>
+
+
   </div>
   <div class="field">
     <%= f.label :status %><br>
     <%= f.text_field :status %>
   </div>
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

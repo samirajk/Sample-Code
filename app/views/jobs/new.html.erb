@@ -23,7 +23,8 @@
 
     <div class="field">
       Tags
-      <%= f.select(:tags_id, @tags.all.collect {|x| [x.tag, x.id]},{},:multiple => true,:allow_blank => false) %>
+
+      <%= f.select(:tags_id, @tags.map{ |tag| [tag.tag, tag.id] }) %>
 
     </div>
 

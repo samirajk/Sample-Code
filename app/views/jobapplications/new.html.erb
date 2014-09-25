@@ -1,7 +1,32 @@
 
-
 <h1>New jobapplication</h1>
 
-<%= render 'form' %>
+<%= form_for(@jobapplication) do |f| %>
+    <% if @jobapplication.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@jobapplication.errors.count, "error") %> prohibited this jobapplication from being saved:</h2>
+
+          <ul>
+            <% @jobapplication.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :coverletter %><br>
+      <%= f.text_field :coverletter %>
+    </div>
+    <div class="field">
+      <%= f.label :dateofapplication %><br>
+      <%= f.datetime_select :dateofapplication %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
 
 <%= link_to 'Back', jobapplications_path %>

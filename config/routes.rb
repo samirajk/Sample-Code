@@ -8,11 +8,14 @@ Rails.application.routes.draw do
 
   get '/jobseekers/:id', to: 'jobseekers#show', as: 'jobseeker'
   #get '/jobs/:id', :to => 'jobs#show', :as => :job
+
   resources :admins
   resources :jobseekers
   resources :jobseekerssessions
   resources :categories
+  resources :job
   resources :jobapplications
+  resources :searchjobs
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -28,6 +31,7 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "admin_log_in" => "sessions#new", :as => "admin_log_in"
 
+  get "emp_signup" => "employers#new",:as=>"emp_signup"
   get "emp_log_out" => "employersessions#destroy", :as => "emp_log_out"
   get "emp_log_in" => "employersessions#new", :as => "emp_log_in"
   get "index_employers" =>"employers#index", :as => "index_employers"
@@ -42,15 +46,23 @@ Rails.application.routes.draw do
   get "new_jobseekers" =>"jobseekers#new", :as => "new_jobseekers"
   get "show_jobseeker" => "jobseekers#show", :as => "show_jobseeker"
   get "index_categories" =>"categories#index", :as =>"index_categories"
+  get "apply_job" => "jobapplications#new", :as => "apply_job"
 
-  get "jobs_list" =>"jobs#index", :as =>"jobs_list"
+
+  get "jobs_list" =>"jobs#jobseekerindex", :as =>"jobs_list"
   get "main_page" =>"jobseekers#index", :as =>"main_page"
-  get "jobs_app" =>"jobapplications#index", :as =>"jobs_app"
+  get "jobs_applied" =>"jobapplications#jobseekerindex", :as =>"jobs_applied"
 
 
   get "applicationbyjob" => "jobapplications#applicationbyjob", :as =>"applicationbyjob"
 
   get "edit_status" =>"jobapplications#editstatus", :as =>"edit_status"
+  get "create_job" =>"jobs#new", :as =>"create_job"
+
+  get "create_tag" =>"tags#new", :as =>"create_tag"
+
+  get "searchjobs"=>"searchjobs#searchjobs",:as => "searchjobs"
+  get "viewjobs"=>"searchjobs#viewjobsbysearchcriteria", :as =>"viewjobs"
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :admins
   resources :sessions

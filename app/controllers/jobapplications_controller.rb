@@ -9,18 +9,26 @@ class JobapplicationsController < ApplicationController
   def index
     @jobapplications = Jobapplication.all
   end
+  def jobseekerindex
 
+    @jobapplications = Jobapplication.where("jobseeker_id = ?", session[:user_id])
+   # @jobapplications = Jobapplication.find_by_jobseeker_id()
+   # @jobapplications = Jobapplication.find_by_jobseeker_id(1)
+  end
   # GET /jobapplications/1
   # GET /jobapplications/1.json
   def show
+    #flash.now.alert = current_user
   end
-
   def applicationbyjob
     @list = Jobapplication.where("job_id = ?",params[:id])
   end
   # GET /jobapplications/new
   def new
+
     @jobapplication = Jobapplication.new
+    flash[:job_id] = request.path_parameters[:format]
+    #render :text=>flash[:job_id].class
   end
 
   # GET /jobapplications/1/edit
@@ -34,8 +42,11 @@ class JobapplicationsController < ApplicationController
   # POST /jobapplications.json
   def create
     @jobapplication = Jobapplication.new(jobapplication_params)
-
+    #render :text=>@jobapplication.job_id
     respond_to do |format|
+      @jobapplication.jobseeker_id = session[:user_id]
+      @jobapplication.job_id = flash[:job_id].to_i
+      @jobapplication.status = "Applied"
       if @jobapplication.save
         format.html { redirect_to @jobapplication, notice: 'Job application was successfully created.' }
         format.json { render :show, status: :created, location: @jobapplication }
@@ -73,11 +84,12 @@ class JobapplicationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_jobapplication
+      #raise @params.inspect
       @jobapplication = Jobapplication.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def jobapplication_params
-      params.require(:jobapplication).permit(:coverletter, :date_of_application, :status)
+      params.require(:jobapplication).permit(:coverletter, :dateofapplication, :status, :job_id, :jobseeker_id)
     end
 end
