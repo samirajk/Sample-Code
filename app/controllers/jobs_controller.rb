@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  layout 'employer'
+  #layout 'employer'
   # GET /jobs
   # GET /jobs.json
   def index
@@ -32,11 +32,11 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
-    @job.tags_id = job_params[:tags_id].slice(1,job_params[:tags_id].length).join(",")
-    @job.employer_id = session[:user_id]
+   # @job.tags_id = job_params[:tags_id].slice(1,job_params[:tags_id].length).join(",")
+    @job.employers_id = session[:user_id]
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to emp_home_page_path, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -83,6 +83,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :application_deadline, :employer_id ,:category_id, tags_id: [])
+      params.require(:job).permit(:title, :description, :application_deadline, :tags_id, :category_id, :employer_id  )
     end
 end

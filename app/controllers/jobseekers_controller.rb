@@ -1,9 +1,6 @@
 class JobseekersController < ApplicationController
   before_action :set_jobseeker, only: [:show, :edit, :update, :destroy]
-  def current_user
-    @_current_user ||= session[:current_user_id] &&
-        Jobseeker.find(session[:current_user_id])
-  end
+
 
   # GET /jobseekers
   # GET /jobseekers.json
