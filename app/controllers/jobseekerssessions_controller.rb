@@ -5,7 +5,7 @@ class JobseekerssessionsController < ApplicationController
 
   def create
 
-    jobseeker = Jobseeker.authenticate(params[:email], params[:password])
+    jobseeker = Jobseeker.authenticate(params[:username], params[:password])
     if jobseeker
       session[:user_id] = jobseeker.id
       redirect_to :controller => "jobseekers", :action => "index", :notice => "Logged in!"

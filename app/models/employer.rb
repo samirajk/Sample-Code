@@ -1,5 +1,6 @@
 class Employer < ActiveRecord::Base
-
+  has_many :tags
+  has_many :jobs
   attr_accessor :password
   before_save :encrypt_password
 

@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   get 'employer_session/new'
 
   resources :employers
-
+  resources :jobs
   get 'sessions/new'
 
   get '/jobseekers/:id', to: 'jobseekers#show', as: 'jobseeker'
+  #get '/jobs/:id', :to => 'jobs#show', :as => :job
   resources :admins
   resources :jobseekers
   resources :jobseekerssessions
@@ -39,6 +40,9 @@ Rails.application.routes.draw do
   get "show_jobseeker" => "jobseekers#show", :as => "show_jobseeker"
   get "index_categories" =>"categories#index", :as =>"index_categories"
 
+  get "jobs_list" =>"jobs#index", :as =>"jobs_list"
+  get "main_page" =>"jobseekers#index", :as =>"main_page"
+  get "jobs_app" =>"jobapplications#index", :as =>"jobs_app"
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :admins

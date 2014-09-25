@@ -6,8 +6,8 @@ class Jobseeker < ActiveRecord::Base
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
-  validates_presence_of :email
-  validates_uniqueness_of :email
+  validates_presence_of :username
+  validates_uniqueness_of :username
 
   def encrypt_password
     if password.present?
@@ -17,8 +17,8 @@ class Jobseeker < ActiveRecord::Base
   end
 
 
-  def self.authenticate(email, password)
-    jobseeker = find_by_email(email)
+  def self.authenticate(username, password)
+    jobseeker = find_by_username(username)
     if jobseeker && jobseeker.password_hash == BCrypt::Engine.hash_secret(password, jobseeker.password_salt)
       jobseeker
     else

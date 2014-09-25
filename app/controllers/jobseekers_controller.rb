@@ -36,7 +36,7 @@ class JobseekersController < ApplicationController
 
     respond_to do |format|
       if @jobseeker.save
-        format.html { redirect_to @jobseeker, notice: 'Jobseeker was successfully created. Signed Up! .' }
+        format.html { redirect_to jobseeker_log_in_path, notice: 'Jobseeker was successfully created. Signed Up! .' }
         format.json { render :show, status: :created, location: @jobseeker }
       else
         format.html { render :new }
@@ -74,7 +74,7 @@ class JobseekersController < ApplicationController
     def set_jobseeker
       if params[:id].nil? # if there is no user id in params, show current one
         @jobseeker = current_user
-      else # if there is the user id in params just use it,
+      else # if there is the user id in pa  rams just use it,
         # maybe get 'authorization failed'
         @jobseeker = Jobseeker.find params[:id]
       end
@@ -82,6 +82,6 @@ class JobseekersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def jobseeker_params
-      params.require(:jobseeker).permit(:name, :email, :password, :password_confirmation, :password_hash, :password_salt, :phonenumber, :skills, :resume)
+      params.require(:jobseeker).permit(:name, :username, :password, :password_confirmation, :password_hash, :password_salt, :phonenumber, :skills, :resume)
     end
 end

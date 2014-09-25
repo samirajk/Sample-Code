@@ -1,3 +1,13 @@
+<div id="user_nav">
+
+  <% if current_user%>
+      Logged in as <%= current_user.username %>.
+      <%= link_to "Log out", log_out_path %>
+
+  <% end %>
+
+</div>
+
 <h1>Listing jobs</h1>
 
 <table>
@@ -26,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Job', new_job_path %>
+<%= link_to 'Back', main_page_path %>

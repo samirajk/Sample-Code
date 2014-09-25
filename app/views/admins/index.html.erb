@@ -1,3 +1,13 @@
+<div id="user_nav">
+
+  <% if current_user%>
+      Logged in as <%= current_user.username %>.
+      <%= link_to "Log out", log_out_path %>
+
+  <% end %>
+
+</div>
+
 <h1>Listing admins</h1>
 
 <table>

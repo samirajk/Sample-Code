@@ -53,15 +53,16 @@ ActiveRecord::Schema.define(version: 20140924192941) do
     t.string   "title"
     t.string   "description"
     t.datetime "application_deadline"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "jobseekers", force: true do |t|
     t.string   "name"
+    t.string   "username"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.string   "email"
     t.string   "phonenumber"
     t.string   "skills"
     t.string   "resume"
@@ -71,6 +72,8 @@ ActiveRecord::Schema.define(version: 20140924192941) do
 
   create_table "tags", force: true do |t|
     t.string   "tag"
+    t.integer  "jobs_id"
+    t.integer  "employers_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,7 +4,6 @@ class CreateJobs < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.datetime :application_deadline
-
       t.references :category
       t.timestamps
     end
