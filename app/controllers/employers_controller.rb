@@ -1,43 +1,44 @@
 class EmployersController < ApplicationController
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
-  def current_user
-    @_current_user ||= session[:current_user_id] &&
-        Admin.find(session[:current_user_id])
-  end
   # GET /employers
   # GET /employers.json
-  def index
 
-    @employers = Employer.all
+  def index
   end
 
   # GET /employers/1
   # GET /employers/1.json
   def show
+
   end
 
   def homepage
-    
+
   end
   # GET /employers/new
   def new
+
     @employer = Employer.new
+    @category = Category.all
+    @tags = Tag.all
   end
 
   # GET /employers/1/edit
   def edit
+    render :layout => 'employer'
+    @category = Category.all
+    @tags = Tag.all
   end
 
   # POST /employers
   # POST /employers.json
   def create
-
     @employer = Employer.new(employer_params)
     if @employer.save
-      redirect_to employers_url, notice:  "Employer Signed up"
+      redirect_to emp_show_path(:id => @employer.id) , :notice => "Signed up"
     else
       render "new"
-   end
+    end
   end
 
   # PATCH/PUT /employers/1
@@ -72,6 +73,6 @@ class EmployersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employer_params
-      params.require(:employer).permit(:company, :contact, :email, :password_hash, :password_salt,:password,:password_confirmation)
+      params.require(:employer).permit(:company, :contact, :email, :password_hash, :password_salt,:password,:password_confirmation, :category_id)
     end
 end

@@ -21,13 +21,14 @@
       <% options = options_from_collection_for_select(@category, 'id', 'category') %>
       <%= f.select(:category_id, @category.map{ |category| [category.category, category.id] }) %>
     </div>
-    <div class="actions">
-      <%= f.submit %>
-    </div>
+
     <div class="field">
      Tags
      <%= f.select(:tags_id, @tags.all.collect {|x| [x.tag, x.id]},{},:multiple => true,:allow_blank => false) %>
+    </div>
 
+    <div class="actions">
+      <%= f.submit %>
     </div>
 <% end %>
 
