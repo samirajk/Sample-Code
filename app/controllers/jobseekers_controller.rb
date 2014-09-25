@@ -9,7 +9,6 @@ class JobseekersController < ApplicationController
   # GET /jobseekers.json
   def index
     session[:current_user_id]=session[:user_id]
-
     @jobseekers = Jobseeker.all
   end
 
@@ -19,6 +18,7 @@ class JobseekersController < ApplicationController
 
 
   end
+
 
   # GET /jobseekers/new
   def new

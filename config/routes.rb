@@ -5,15 +5,14 @@ Rails.application.routes.draw do
   resources :jobs
   get 'sessions/new'
 
-<<<<<<< HEAD
+
   get '/jobseekers/:id', to: 'jobseekers#show', as: 'jobseeker'
   #get '/jobs/:id', :to => 'jobs#show', :as => :job
-=======
->>>>>>> origin/master
   resources :admins
   resources :jobseekers
   resources :jobseekerssessions
   resources :categories
+  resources :jobapplications
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -48,6 +47,10 @@ Rails.application.routes.draw do
   get "main_page" =>"jobseekers#index", :as =>"main_page"
   get "jobs_app" =>"jobapplications#index", :as =>"jobs_app"
 
+
+  get "applicationbyjob" => "jobapplications#applicationbyjob", :as =>"applicationbyjob"
+
+  get "edit_status" =>"jobapplications#editstatus", :as =>"edit_status"
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :admins
   resources :sessions

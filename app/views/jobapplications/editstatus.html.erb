@@ -1,0 +1,23 @@
+<h1>Editing jobapplication</h1>
+
+<%= form_for(@list, :url => {:action => 'update', :id => @list.id}) do |f| %>
+    <div class="field">
+      Title</br>
+      <%= @list.coverletter%>
+    </div>
+    <div class="field">
+      Application Deadline</br>
+      <%= @list.dateofapplication %>
+    </div>
+
+    <div class="field">
+      Status</br>
+      <%= f.text_field :status %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
+<%= link_to 'Show', @jobapplication %> |
+<%= link_to 'Back', jobapplications_path %>

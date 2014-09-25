@@ -13,9 +13,11 @@ class JobapplicationsController < ApplicationController
   # GET /jobapplications/1
   # GET /jobapplications/1.json
   def show
-    @jobapplication = Jobapplication.find_by_jobseeker_id(current_user)
   end
 
+  def applicationbyjob
+    @list = Jobapplication.where("job_id = ?",params[:id])
+  end
   # GET /jobapplications/new
   def new
     @jobapplication = Jobapplication.new
@@ -25,6 +27,9 @@ class JobapplicationsController < ApplicationController
   def edit
   end
 
+  def editstatus
+    @list = Jobapplication.find(params[:id])
+  end
   # POST /jobapplications
   # POST /jobapplications.json
   def create

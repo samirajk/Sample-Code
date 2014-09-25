@@ -15,6 +15,7 @@ class JobsController < ApplicationController
   def jobsbyemployer
     @jobs = Job.where("employer_id = ?", session[:user_id])
   end
+
   # GET /jobs/new
   def new
     @job = Job.new
