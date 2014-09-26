@@ -1,6 +1,17 @@
 class JobapplicationsController < ApplicationController
   before_action :set_jobapplication, only: [:show, :edit, :update, :destroy]
 
+  layout :resolve_layout
+
+  def resolve_layout
+    case action_name
+      when "applicationbyjob"
+        "employer"
+      else
+        "application"
+    end
+  end
+
   # GET /jobapplications
   # GET /jobapplications.json
   def index
@@ -18,6 +29,10 @@ class JobapplicationsController < ApplicationController
     #flash.now.alert = current_user
 
   end
+    #flash.now.alert = current_user
+  def applicationbyjob
+    @list = Jobapplication.where("job_id = ?",params[:id])
+  end
   # GET /jobapplications/new
   def new
 
@@ -30,6 +45,9 @@ class JobapplicationsController < ApplicationController
   def edit
   end
 
+  def editstatus
+    @list = Jobapplication.find(params[:id])
+  end
   # POST /jobapplications
   # POST /jobapplications.json
   def create
@@ -53,12 +71,26 @@ class JobapplicationsController < ApplicationController
   # PATCH/PUT /jobapplications/1.json
   def update
     respond_to do |format|
-      if @jobapplication.update(jobapplication_params)
-        format.html { redirect_to @jobapplication, notice: 'Job application was successfully updated.' }
-        format.json { render :show, status: :ok, location: @jobapplication }
+      if(!Employer.where("Id = ?",session[:user_id]))
+        if @jobapplication.update(jobapplication_params)
+          format.html { redirect_to @jobapplication, notice: 'Job application was successfully updated.' }
+          format.json { render :show, status: :ok, location: @jobapplication }
+
+        else
+          format.html { render :edit }
+          format.json { render json: @jobapplication.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @jobapplication.errors, status: :unprocessable_entity }
+        if @jobapplication.update(jobapplication_params)
+          #send status update mail
+          Notifier.send_email_to_applicant(@jobapplication.jobseeker.username,@jobapplication.job.title,@jobapplication.job.employer.company).deliver
+          flash[:notice] = 'Successfully Changed !'
+          format.html { redirect_to controller: "jobapplications" , action: "applicationbyjob" , :id =>  @jobapplication.job.id }
+          format.json { render :show, status: :ok, location: @jobapplication }
+        else
+          format.html { render :edit }
+          format.json { render json: @jobapplication.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -76,7 +108,6 @@ class JobapplicationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_jobapplication
-      #raise @params.inspect
       @jobapplication = Jobapplication.find(params[:id])
     end
 

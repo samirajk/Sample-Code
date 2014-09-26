@@ -18,7 +18,7 @@ class JobseekersControllerTest < ActionController::TestCase
 
   test "should create jobseeker" do
     assert_difference('Jobseeker.count') do
-      post :create, jobseeker: { email: @jobseeker.email, name: @jobseeker.name, password_hash: @jobseeker.password_hash, password_salt: @jobseeker.password_salt, phonenumber: @jobseeker.phonenumber, resume: @jobseeker.resume, skills: @jobseeker.skills }
+      post :create, jobseeker: {name: @jobseeker.name, password_hash: @jobseeker.password_hash, password_salt: @jobseeker.password_salt, phonenumber: @jobseeker.phonenumber, resume: @jobseeker.resume, skills: @jobseeker.skills }
     end
 
     assert_redirected_to jobseeker_path(assigns(:jobseeker))
@@ -35,7 +35,7 @@ class JobseekersControllerTest < ActionController::TestCase
   end
 
   test "should update jobseeker" do
-    patch :update, id: @jobseeker, jobseeker: { email: @jobseeker.email, name: @jobseeker.name, password_hash: @jobseeker.password_hash, password_salt: @jobseeker.password_salt, phonenumber: @jobseeker.phonenumber, resume: @jobseeker.resume, skills: @jobseeker.skills }
+    patch :update, id: @jobseeker, jobseeker: {name: @jobseeker.name, password_hash: @jobseeker.password_hash, password_salt: @jobseeker.password_salt, phonenumber: @jobseeker.phonenumber, resume: @jobseeker.resume, skills: @jobseeker.skills }
     assert_redirected_to jobseeker_path(assigns(:jobseeker))
   end
 

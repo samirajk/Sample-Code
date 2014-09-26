@@ -1,12 +1,10 @@
 class JobseekersController < ApplicationController
   before_action :set_jobseeker, only: [:show, :edit, :update, :destroy]
 
-
   # GET /jobseekers
   # GET /jobseekers.json
   def index
-    session[:current_jobseeker_id]=session[:user_id]
-
+    session[:current_user_id]=session[:user_id]
     @jobseekers = Jobseeker.all
   end
 
@@ -14,7 +12,11 @@ class JobseekersController < ApplicationController
   # GET /jobseekers/1.json
   def show
 
+  end
 
+  def view
+    @jobseeker = Jobseeker.find(params[:id])
+    @jobid = params[:jobid]
   end
 
   # GET /jobseekers/new

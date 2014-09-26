@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
-
+  layout 'employer'
   # GET /tags
   # GET /tags.json
   def index
