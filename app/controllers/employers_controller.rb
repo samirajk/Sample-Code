@@ -1,9 +1,14 @@
 class EmployersController < ApplicationController
+
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
   # GET /employers
   # GET /employers.json
 
   def index
+    @employers = Employer.all
+  end
+  def employerindexforadmin
+    @employers = Employer.all
   end
 
   # GET /employers/1
@@ -35,7 +40,7 @@ class EmployersController < ApplicationController
   def create
     @employer = Employer.new(employer_params)
     if @employer.save
-      redirect_to emp_show_path(:id => @employer.id) , :notice => "Signed up"
+      redirect_to admin_index_path(:id => @employer.id) , :notice => "Employer Signed up"
     else
       render "new"
     end

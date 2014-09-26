@@ -41,4 +41,4 @@ gem 'high_voltage', '~> 2.2.1'
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]

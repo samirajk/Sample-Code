@@ -26,4 +26,12 @@
 </p>
 
 <%= link_to 'Edit', edit_employer_path(@employer) %> |
+
+<% if current_user %>
+    <%= current_employer = nil %>
+    <%= link_to 'Back', employerindexforadmin_path %>
+<% end %>
+
+<% if current_employer %>
 <%= link_to 'Back', employers_path %>
+<% end %>

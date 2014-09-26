@@ -1,0 +1,25 @@
+<h1>Search jobs based on content/name/employer/tags(</h1>
+
+<%= form_tag viewjobs_path do %>
+
+    <div class="field">
+      Search text:</br>
+      <%= text_field_tag "searchcriteria", nil %>
+    </div>
+    <div class="field">
+    <select name="searchcriteria_select">
+
+      <option value="jobtitle">Job Title</option>
+      <option value="jobdescription">Job description(content)</option>
+      <option value="employername">Employer Name</option>
+      <option value="tags">Tags</option>
+
+    </select>
+      </div>
+    <div class="field">
+      <p class="button"><%= submit_tag "Search" %></p>
+    </div>
+<% end %>
+<%= link_to 'View All', viewallunappliedjobs_path %>
+<br/>
+<%= link_to 'Back', jobseekers_path %>

@@ -1,14 +1,11 @@
 class JobseekersController < ApplicationController
   before_action :set_jobseeker, only: [:show, :edit, :update, :destroy]
-  def current_user
-    @_current_user ||= session[:current_user_id] &&
-        Jobseeker.find(session[:current_user_id])
-  end
+
 
   # GET /jobseekers
   # GET /jobseekers.json
   def index
-    session[:current_user_id]=session[:user_id]
+    session[:current_jobseeker_id]=session[:user_id]
 
     @jobseekers = Jobseeker.all
   end
@@ -73,7 +70,7 @@ class JobseekersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_jobseeker
       if params[:id].nil? # if there is no user id in params, show current one
-        @jobseeker = current_user
+        @jobseeker = current_jobseeker
       else # if there is the user id in pa  rams just use it,
         # maybe get 'authorization failed'
         @jobseeker = Jobseeker.find params[:id]

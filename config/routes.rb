@@ -5,15 +5,17 @@ Rails.application.routes.draw do
   resources :jobs
   get 'sessions/new'
 
-<<<<<<< HEAD
+
   get '/jobseekers/:id', to: 'jobseekers#show', as: 'jobseeker'
   #get '/jobs/:id', :to => 'jobs#show', :as => :job
-=======
->>>>>>> origin/master
+
   resources :admins
   resources :jobseekers
   resources :jobseekerssessions
   resources :categories
+  resources :job
+  resources :jobapplications
+  resources :searchjobs
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -24,18 +26,18 @@ Rails.application.routes.draw do
   # Example of regular route:
   #get 'products/:id' => 'catalog#view'
   get "admin_signup" => "admins#new",:as=>"admin_signup"
-  get "emp_signup" => "employers#new",:as=>"emp_sign_up"
   get "admin_index"=>"admins#index", :as=>"admin_index"
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "admin_log_in" => "sessions#new", :as => "admin_log_in"
 
+  get "emp_signup" => "employers#new",:as=>"emp_signup"
   get "emp_log_out" => "employersessions#destroy", :as => "emp_log_out"
   get "emp_log_in" => "employersessions#new", :as => "emp_log_in"
   get "index_employers" =>"employers#index", :as => "index_employers"
   get "emp_homepage" => "employers#homepage", :as => "emp_home_page"
   get "my_jobs" => "jobs#jobsbyemployer", :as => "my_jobs"
   get 'pages/home' => 'high_voltage/pages#show', id: 'home'
-
+  get "employerindexforadmin" => "employers#employerindexforadmin", :as=> "employerindexforadmin"
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
   get "jobseeker_log_out" => "jobseekerssessions#destroy", :as => "jobseeker_log_out"
@@ -43,10 +45,24 @@ Rails.application.routes.draw do
   get "new_jobseekers" =>"jobseekers#new", :as => "new_jobseekers"
   get "show_jobseeker" => "jobseekers#show", :as => "show_jobseeker"
   get "index_categories" =>"categories#index", :as =>"index_categories"
+  get "apply_job" => "jobapplications#new", :as => "apply_job"
 
-  get "jobs_list" =>"jobs#index", :as =>"jobs_list"
+
+  get "jobs_list" =>"jobs#jobseekerindex", :as =>"jobs_list"
   get "main_page" =>"jobseekers#index", :as =>"main_page"
-  get "jobs_app" =>"jobapplications#index", :as =>"jobs_app"
+  get "jobs_applied" =>"jobapplications#jobseekerindex", :as =>"jobs_applied"
+
+  get "create_job" =>"jobs#new", :as =>"create_job"
+  get "viewallunappliedjobs"=>"jobs#viewallunappliedjobs", :as =>"viewallunappliedjobs"
+
+  get "create_tag" =>"tags#new", :as =>"create_tag"
+
+  get "searchmyjobs"=>"searchjobs#searchmyjobs",:as => "searchmyjobs"
+  #get "viewjobs"=>"searchjobs#viewjobsbysearchcriteria", :as =>"viewjobs"
+  post "viewjobs"=>"searchjobs#viewjobsbysearchcriteria", :as =>"viewjobs"
+  #get "viewsearchengine"=>"searchjobs#viewjobsbysearchcriteria", :as =>"viewsearchengine"
+
+  get "viewrecommendedjobs"=>"searchjobs#viewrecommendedjobs", :as =>"viewrecommendedjobs"
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :admins
