@@ -7,8 +7,8 @@ class CreateJobseekers < ActiveRecord::Migration
       t.string :password_hash
       t.string :password_salt
       t.string :phonenumber
-      t.string :skills
-      t.string :resume
+      t.text :skills
+      t.text :resume
 
       t.timestamps
     end

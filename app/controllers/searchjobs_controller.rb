@@ -32,9 +32,9 @@ select * from jobs where id in (select job_id from jobapplications where jobseek
   end
 
   if select_searchcriteria.match('tags')
-    @jobs = Job.find_by_sql(" select * from jobs where id in  (select jobs_id from tags where tag in  (select tag from tags where UPPER(tag) like UPPER('%#{searchcriteria}%')))
+    @jobs = Job.find_by_sql(" select * from jobs where id in  (select job_id from jobtags where tag_id in  (select id from tags where UPPER(tag) like UPPER('%#{searchcriteria}%')))
 EXCEPT
-select * from jobs where id in (select job_id from jobapplications where jobseeker_id = #{session[:user_id]} AND job_id in (select jobs_id from tags where tag in  (select tag from tags where UPPER(tag) like UPPER('%#{searchcriteria}%'))))")
+select * from jobs where id in (select job_id from jobapplications where jobseeker_id = #{session[:user_id]} AND job_id in (select job_id from jobtags where tag_id in  (select id from tags where UPPER(tag) like UPPER('%#{searchcriteria}%'))))")
 
   end
 
@@ -44,7 +44,6 @@ select * from jobs where id in (select job_id from jobapplications where jobseek
     #render :text=> request.path_parameters
     jobapplication_id = request.path_parameters[:format]
     @jobapplication_id = jobapplication_id.to_i
-
     #render :text=>@tags.inspect
   end
 end

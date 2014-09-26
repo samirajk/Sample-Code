@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :jobtags
+
   get 'employer_session/new'
 
   resources :employers do

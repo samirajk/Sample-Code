@@ -1,4 +1,14 @@
 <div id="user_nav">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
 
   <% if current_jobseeker%>
       Logged in as <%= current_jobseeker.username %>.
@@ -9,31 +19,35 @@
 </div>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @jobseeker.name %>
-</p>
+<div class="jumbotron container">
+  <center>
+    <p>
+      <strong>Name:</strong>
+      <%= @jobseeker.name %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @jobseeker.username %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @jobseeker.username %>
+    </p>
 
 
-<p>
-  <strong>Phonenumber:</strong>
-  <%= @jobseeker.phonenumber %>
-</p>
+    <p>
+      <strong>Phonenumber:</strong>
+      <%= @jobseeker.phonenumber %>
+    </p>
 
-<p>
-  <strong>Skills:</strong>
-  <%= @jobseeker.skills %>
-</p>
+    <p>
+      <strong>Skills:</strong>
+      <%= @jobseeker.skills %>
+    </p>
 
-<p>
-  <strong>Resume:</strong>
-  <%= @jobseeker.resume %>
-</p>
+    <p>
+      <strong>Resume:</strong>
+      <%= @jobseeker.resume %>
+    </p>
+    <div class="col-sm-6"><%= button_to "Edit", edit_jobseeker_path(@jobseeker), :method => "get" ,:class=>"btn btn-primary"%></div>
+    <div class="col-sm-6"><%= button_to "Back", jobseekers_path, :method => "get" ,:class=>"btn btn-primary"%></div>
+  </center>
+</div>
 
-<%= link_to 'Edit', edit_jobseeker_path(@jobseeker) %> |
-<%= link_to 'Back', jobseekers_path %>

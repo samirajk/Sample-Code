@@ -1,8 +1,11 @@
-<H1> This is Dire Wolf</H1>
+<div class="jumbotron">
+<center>
+<H1>Dire Wolf</H1>
+  <div class="col-sm-6"><%= button_to "Job Seeker", jobseeker_log_in_path, :method => "get" ,:class=>"btn btn-primary"%></div>
+  <div class="col-sm-6"><%= button_to "Employer", emp_log_in_path, :method => "get" ,:class=>"btn btn-primary"%></div>
 
-<%= link_to "Job Seeker Login", jobseeker_log_in_path %><br/>
-<%= link_to "Employer SignUp", emp_signup_path %><br/>
-<%= link_to "Employer Login", emp_log_in_path %><br/>
-<%= link_to "Admin Login", admin_log_in_path %><br/>
-<%= link_to "Create Jobs", create_job_path %>
-<%= link_to "Create Tags", create_tag_path %>
+  <div class="footer navbar-fixed-bottom">
+  <%= button_to "Admin", admin_log_in_path, :method => "get" ,:class=>"btn btn-danger", :style=>"float:right"%>
+  </div>
+</center>
+</div>

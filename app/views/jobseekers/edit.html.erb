@@ -1,6 +1,20 @@
-<h1>Editing jobseeker</h1>
 
-<%= render 'form' %>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<%= link_to 'Show', @jobseeker %> |
-<%= link_to 'Back', jobseekers_path %>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
+  <center>
+    <h1>Edit</h1>
+
+    <%= render 'form' %>
+
+    <%= link_to 'Show', @jobseeker %> |
+    <%= link_to 'Back', jobseekers_path %>
+  </center>
+</div>

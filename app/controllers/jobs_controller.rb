@@ -36,6 +36,14 @@ class JobsController < ApplicationController
     @job.employer_id = session[:user_id]
     respond_to do |format|
       if @job.save
+        job_params[:tags_id].each do|x|
+          if x!=""
+            @jobtag = Jobtag.new
+            @jobtag.job_id = @job.id
+            @jobtag.tag_id = x
+            @jobtag.save
+          end
+        end
         format.html { redirect_to emp_homepage_path, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else

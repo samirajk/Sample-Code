@@ -58,6 +58,7 @@ class JobapplicationsController < ApplicationController
       @jobapplication.job_id = flash[:job_id].to_i
       @jobapplication.status = "Applied"
       if @jobapplication.save
+        Notifier.send_email_to_employer(@jobapplication.job.employer.email,@jobapplication.job.title).deliver
         format.html { redirect_to @jobapplication, notice: 'Job application was successfully created.' }
         format.json { render :show, status: :created, location: @jobapplication }
       else

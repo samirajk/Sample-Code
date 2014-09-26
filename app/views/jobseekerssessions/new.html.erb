@@ -1,16 +1,29 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
 <%= link_to "Sign up", new_jobseekers_path %>
+
+<div class="jumbotron container">
+  <center>
 <h1>Log in</h1>
 
 <%= form_tag jobseekerssessions_path do %>
     <p>
-      <%= label_tag :email %><br />
+      <%= label_tag :email%><br />
       <%= text_field_tag :username, params[:username] %>
     </p>
     <p>
       <%= label_tag :password %><br />
       <%= password_field_tag :password %>
     </p>
-    <p class="button"><%= submit_tag "Log in" %></p>
+    <p class="btn"><%= submit_tag "Log in" %></p>
 <% end %>
-
+  </center>
+</div>
 <%= link_to "Back", root_url %>

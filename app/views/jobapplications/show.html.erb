@@ -19,7 +19,6 @@
 <%= link_to 'Edit', edit_jobapplication_path(@jobapplication) %> |
 <% if current_jobseeker%>
 <%= current_employer = nil %>
-<%= link_to 'View Recommended jobs', viewrecommendedjobs_path(@jobapplication) %>
 <%= link_to 'Back', main_page_path %>
 <% end %>
 <% if current_employer%>
