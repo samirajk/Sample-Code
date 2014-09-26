@@ -43,26 +43,8 @@ ActiveRecord::Schema.define(version: 20140926173858) do
     t.datetime "updated_at"
   end
 
-  create_table "job_applications", force: true do |t|
-    t.string   "coverletter"
-    t.datetime "date_of_application"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "job_seekers", force: true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "phone_number"
-    t.string   "skills"
-    t.string   "resume"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "jobapplications", force: true do |t|
-    t.string   "coverletter"
+    t.text     "coverletter"
     t.datetime "dateofapplication"
     t.string   "status"
     t.integer  "job_id"
@@ -75,11 +57,11 @@ ActiveRecord::Schema.define(version: 20140926173858) do
     t.string   "title"
     t.string   "description"
     t.datetime "application_deadline"
+    t.integer  "category_id"
+    t.integer  "tags_id"
+    t.integer  "employers_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "category_id"
-    t.string   "tags_id"
-    t.string   "employer_id"
   end
 
   create_table "jobseekers", force: true do |t|
@@ -88,15 +70,10 @@ ActiveRecord::Schema.define(version: 20140926173858) do
     t.string   "password_hash"
     t.string   "password_salt"
     t.string   "phonenumber"
-    t.text   "skills"
-    t.text   "resume"
+    t.text     "skills"
+    t.text     "resume"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "jobtag", force: true do |t|
-    t.integer "job_id"
-    t.integer "tag_id"
   end
 
   create_table "jobtags", force: true do |t|
@@ -108,6 +85,8 @@ ActiveRecord::Schema.define(version: 20140926173858) do
 
   create_table "tags", force: true do |t|
     t.string   "tag"
+    t.integer  "employers_id"
+    t.integer  "jobs_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

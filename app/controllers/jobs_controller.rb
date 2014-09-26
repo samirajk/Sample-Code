@@ -33,7 +33,7 @@ class JobsController < ApplicationController
   def create
     @job = Job.new(job_params)
     @job.tags_id = job_params[:tags_id].slice(1,job_params[:tags_id].length).join(",")
-    @job.employer_id = session[:user_id]
+    @job.employers_id = session[:user_id]
     respond_to do |format|
       if @job.save
         job_params[:tags_id].each do|x|
@@ -91,6 +91,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :description, :application_deadline,:employer_id ,:category_id, tags_id: [])
+      params.require(:job).permit(:title, :description, :application_deadline,:employers_id ,:category_id, tags_id: [])
     end
 end
