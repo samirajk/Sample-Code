@@ -1,5 +1,17 @@
 class JobapplicationsController < ApplicationController
   before_action :set_jobapplication, only: [:show, :edit, :update, :destroy]
+
+  layout :resolve_layout
+
+  def resolve_layout
+    case action_name
+      when "applicationbyjob"
+        "employer"
+      else
+        "application"
+    end
+  end
+
   def current_user
     @_current_user ||= session[:current_user_id] &&
         Jobseeker.find(session[:current_user_id])
@@ -61,15 +73,30 @@ class JobapplicationsController < ApplicationController
   # PATCH/PUT /jobapplications/1.json
   def update
     respond_to do |format|
-      if @jobapplication.update(jobapplication_params)
-        format.html { redirect_to @jobapplication, notice: 'Job application was successfully updated.' }
-        format.json { render :show, status: :ok, location: @jobapplication }
+      if(!Employer.where("Id = ?",session[:user_id]))
+        if @jobapplication.update(jobapplication_params)
+          format.html { redirect_to @jobapplication, notice: 'Job application was successfully updated.' }
+          format.json { render :show, status: :ok, location: @jobapplication }
+
+        else
+          format.html { render :edit }
+          format.json { render json: @jobapplication.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @jobapplication.errors, status: :unprocessable_entity }
+        if @jobapplication.update(jobapplication_params)
+          #send status update mail
+          Notifier.send_email_to_applicant(@jobapplication.jobseeker.username,@jobapplication.job.title,@jobapplication.job.employer.company).deliver
+          flash[:notice] = 'Successfully Changed !'
+          format.html { redirect_to controller: "jobapplications" , action: "applicationbyjob" , :id =>  @jobapplication.job.id }
+          format.json { render :show, status: :ok, location: @jobapplication }
+        else
+          format.html { render :edit }
+          format.json { render json: @jobapplication.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
+
 
   # DELETE /jobapplications/1
   # DELETE /jobapplications/1.json

@@ -2,7 +2,6 @@
 
 one:
   name: MyString
-  email: MyString
   password_hash: MyString
   password_salt: MyString
   phonenumber: MyString
@@ -11,7 +10,6 @@ one:
 
 two:
   name: MyString
-  email: MyString
   password_hash: MyString
   password_salt: MyString
   phonenumber: MyString

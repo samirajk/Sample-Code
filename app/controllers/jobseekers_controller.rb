@@ -1,6 +1,16 @@
 class JobseekersController < ApplicationController
   before_action :set_jobseeker, only: [:show, :edit, :update, :destroy]
 
+  layout :resolve_layout
+
+  def resolve_layout
+    case action_name
+      when "view"
+        "employer"
+      else
+        "application"
+    end
+  end
 
   # GET /jobseekers
   # GET /jobseekers.json
@@ -13,9 +23,12 @@ class JobseekersController < ApplicationController
   # GET /jobseekers/1.json
   def show
 
-
   end
 
+  def view
+    @jobseeker = Jobseeker.find(params[:id])
+    @jobid = params[:jobid]
+  end
 
   # GET /jobseekers/new
   def new

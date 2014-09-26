@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   get 'employer_session/new'
 
-  resources :employers
+  resources :employers do
+    collection  do
+    get 'homepage'
+  end
+end
   resources :jobs
   get 'sessions/new'
 
@@ -35,10 +39,10 @@ Rails.application.routes.draw do
   get "emp_log_out" => "employersessions#destroy", :as => "emp_log_out"
   get "emp_log_in" => "employersessions#new", :as => "emp_log_in"
   get "index_employers" =>"employers#index", :as => "index_employers"
-  get "emp_homepage" => "employers#homepage", :as => "emp_home_page"
+  get "emp_homepage" => "employers#homepage", :as => "emp_homepage"
   get "my_jobs" => "jobs#jobsbyemployer", :as => "my_jobs"
   get 'pages/home' => 'high_voltage/pages#show', id: 'home'
-
+  get 'view_jobseeker' =>'jobseekers#view', :as=>'view_jobseeker'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
   get "jobseeker_log_out" => "jobseekerssessions#destroy", :as => "jobseeker_log_out"
@@ -47,7 +51,6 @@ Rails.application.routes.draw do
   get "show_jobseeker" => "jobseekers#show", :as => "show_jobseeker"
   get "index_categories" =>"categories#index", :as =>"index_categories"
   get "apply_job" => "jobapplications#new", :as => "apply_job"
-
 
   get "jobs_list" =>"jobs#jobseekerindex", :as =>"jobs_list"
   get "main_page" =>"jobseekers#index", :as =>"main_page"
@@ -60,9 +63,6 @@ Rails.application.routes.draw do
   get "create_job" =>"jobs#new", :as =>"create_job"
 
   get "create_tag" =>"tags#new", :as =>"create_tag"
-
-  get "searchjobs"=>"searchjobs#searchjobs",:as => "searchjobs"
-  get "viewjobs"=>"searchjobs#viewjobsbysearchcriteria", :as =>"viewjobs"
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :admins
   resources :sessions

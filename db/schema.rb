@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922224546) do
+ActiveRecord::Schema.define(version: 20140924192942) do
 
   create_table "admins", force: true do |t|
     t.string   "name"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20140922224546) do
     t.string   "persistence_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "applications", force: true do |t|
+    t.string "user"
   end
 
   create_table "categories", force: true do |t|
@@ -41,7 +45,7 @@ ActiveRecord::Schema.define(version: 20140922224546) do
 
   create_table "jobapplications", force: true do |t|
     t.string   "coverletter"
-    t.string   "dateofapplication"
+    t.datetime "dateofapplication"
     t.string   "status"
     t.integer  "job_id"
     t.integer  "jobseeker_id"
@@ -54,11 +58,10 @@ ActiveRecord::Schema.define(version: 20140922224546) do
     t.string   "description"
     t.datetime "application_deadline"
     t.integer  "category_id"
+    t.integer  "tags_id"
+    t.integer  "employers_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string "category_id"
-    t.string "tags_id"
-    t.string "employer_id"
   end
 
   create_table "jobseekers", force: true do |t|
@@ -75,7 +78,6 @@ ActiveRecord::Schema.define(version: 20140922224546) do
 
   create_table "tags", force: true do |t|
     t.string   "tag"
-    t.integer  "jobs_id"
     t.integer  "employers_id"
     t.datetime "created_at"
     t.datetime "updated_at"
