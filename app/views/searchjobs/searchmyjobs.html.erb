@@ -1,25 +1,39 @@
-<h1>Search jobs based on content/name/employer/tags(</h1>
 
-<%= form_tag viewjobs_path do %>
 
-    <div class="field">
-      Search text:</br>
-      <%= text_field_tag "searchcriteria", nil %>
-    </div>
-    <div class="field">
-    <select name="searchcriteria_select">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-      <option value="jobtitle">Job Title</option>
-      <option value="jobdescription">Job description(content)</option>
-      <option value="employername">Employer Name</option>
-      <option value="tags">Tags</option>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-    </select>
-      </div>
-    <div class="field">
-      <p class="button"><%= submit_tag "Search" %></p>
-    </div>
-<% end %>
-<%= link_to 'View All', viewallunappliedjobs_path %>
-<br/>
-<%= link_to 'Back', jobseekers_path %>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
+  <center>
+    <h1>Search</h1>
+    <%= form_tag viewjobs_path do %>
+
+        <div class="field">
+          Query</br>
+          <%= text_field_tag "searchcriteria", nil %>
+        </div>
+        <div class="field">
+          <select name="searchcriteria_select">
+
+            <option value="jobtitle">Job Title</option>
+            <option value="jobdescription">Job description(content)</option>
+            <option value="employername">Employer Name</option>
+            <option value="tags">Tags</option>
+
+          </select>
+        </div>
+        <div class="field">
+          <p class="btn"><%= submit_tag "Search" %></p>
+        </div>
+    <% end %>
+    <%= link_to 'View All', viewallunappliedjobs_path %>
+    <br/>
+    <%= link_to 'Back', jobseekers_path %>
+  </center>
+</div>

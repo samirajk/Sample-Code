@@ -7,33 +7,45 @@
   <% end %>
 
 </div>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<h1>Listing jobs</h1>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Application deadline</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-  <tbody>
-    <% @jobs.each do |job| %>
+<div class="jumbotron container">
+  <center>
+    <h1>Listing jobs</h1>
+
+    <table id="applicationbyjob" class="table table-striped table-bordered">
+      <thead>
       <tr>
-        <td><%= job.title %></td>
-        <td><%= job.description %></td>
-        <td><%= job.application_deadline %></td>
-        <td><%= link_to 'Show Applications', jobapplication_path(job.id)%></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Application deadline</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @jobs.each do |job| %>
+          <tr>
+            <td><%= job.title %></td>
+            <td><%= job.description %></td>
+            <td><%= job.application_deadline %></td>
+            <td><%= link_to 'Show Applications', jobapplication_path(job.id)%></td>
+            <td><%= link_to 'Edit', edit_job_path(job) %></td>
+            <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'Back', main_page_path %>
+    <br>
+
+    <%= link_to 'Back', main_page_path %>
+  </center>
+</div>

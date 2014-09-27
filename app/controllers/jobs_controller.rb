@@ -13,7 +13,7 @@ class JobsController < ApplicationController
   end
 
   def jobsbyemployer
-    @jobs = Job.where("employer_id = ?", session[:user_id])
+    @jobs = Job.where("employers_id = ?", session[:user_id])
   end
   # GET /jobs/new
   def new
@@ -28,6 +28,12 @@ class JobsController < ApplicationController
     @tags = Tag.all
   end
 
+  def searchpage
+    @tags = Tag.where("tag like '%?%'",params[:query])
+    @jobids = Jobtag.where("tag_id in (?)",params[:query])
+    @employers = Employer.where("company like '%?%'",params[:query])
+    @jobs = Job.where("title like '%?%' OR description like '%?%'")
+  end
   # POST /jobs
   # POST /jobs.json
   def create
@@ -59,12 +65,20 @@ class JobsController < ApplicationController
 
     tp = job_params
     tp[:tags_id] = job_params[:tags_id].slice(1,job_params[:tags_id].length).join(",")
-    tp[:employer_id] = session[:user_id]
+    tp[:employers_id] = session[:user_id]
 
 
     respond_to do |format|
       if @job.update(tp)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        job_params[:tags_id].each do|x|
+          if x!=""
+            @jobtag = Jobtag.new
+            @jobtag.job_id = @job.id
+            @jobtag.tag_id = x
+            @jobtag.save
+          end
+        end
+        format.html { redirect_to my_jobs_path, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
@@ -78,7 +92,7 @@ class JobsController < ApplicationController
   def destroy
     @job.destroy
     respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
+      format.html { redirect_to my_jobs_path, notice: 'Job was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

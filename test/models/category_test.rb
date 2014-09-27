@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def test_category
+    category = Category.new :category => categories(:one).category
+    assert category.save
+
+    assert category.destroy
+  end
 end

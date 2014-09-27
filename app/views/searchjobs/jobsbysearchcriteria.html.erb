@@ -27,12 +27,12 @@
         <td><%= job.title %></td>
         <td><%= job.description %></td>
         <td><%= job.application_deadline %></td>
-        <td><%= link_to 'Apply', apply_job_path(job) %></td>
+            <td><%= link_to 'Apply', jobseeker_log_in_path %></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Back',searchmyjobs_path %>
+<%= link_to 'Back',root_url %>
 </center>
 </div>

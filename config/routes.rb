@@ -65,6 +65,7 @@ end
   get "searchmyjobs"=>"searchjobs#searchmyjobs",:as => "searchmyjobs"
   #get "viewjobs"=>"searchjobs#viewjobsbysearchcriteria", :as =>"viewjobs"
   post "viewjobs"=>"searchjobs#viewjobsbysearchcriteria", :as =>"viewjobs"
+  post "jobsearch"=>"searchjobs#jobsbysearchcriteria", :as =>"jobsearch"
   #get "viewsearchengine"=>"searchjobs#viewjobsbysearchcriteria", :as =>"viewsearchengine"
 
   get "viewrecommendedjobs"=>"searchjobs#viewrecommendedjobs", :as =>"viewrecommendedjobs"

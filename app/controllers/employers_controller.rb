@@ -2,7 +2,7 @@ class EmployersController < ApplicationController
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
   # GET /employers
   # GET /employers.json
-
+  layout 'employer'
   def index
     @employers = Employer.all
   end
@@ -62,9 +62,18 @@ class EmployersController < ApplicationController
   # DELETE /employers/1
   # DELETE /employers/1.json
   def destroy
+    empid = @employer.id
     @employer.destroy
+    @jobapplication = Jobapplication.find_by_sql("Select * from jobapplications where job_id in (Select id from jobs where employers_id = #{empid})")
+    @jobapplication.each do |x|
+      x.destroy
+    end
+    @jobs = Job.find_by_sql("Select * from jobs where employers_id = #{empid} ")
+    @jobs.each do |y|
+      y.destroy
+    end
     respond_to do |format|
-      format.html { redirect_to employers_url, notice: 'Employer was successfully destroyed.' }
+      format.html { redirect_to employerindexforadmin_path, notice: 'Employer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

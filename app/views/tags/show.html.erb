@@ -1,9 +1,21 @@
 <p id="notice"><%= notice %></p>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<p>
-  <strong>Tag:</strong>
-  <%= @tag.tag %>
-</p>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', emp_homepage_path %>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
+  <center>
+    <p>
+      <strong>Tag:</strong>
+      <%= @tag.tag %>
+    </p>
+
+    <%= link_to 'Edit', edit_tag_path(@tag) %> |
+    <%= link_to 'Back', emp_homepage_path %>
+  </center>
+</div>

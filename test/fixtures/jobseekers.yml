@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  password_hash: MyString
-  password_salt: MyString
-  phonenumber: MyString
-  skills: MyString
-  resume: MyString
+  name: 'sally'
+  password_hash: 'passwordhash'
+  password_salt: 'passwordsalt'
+  phonenumber: '189489289423'
+  skills: 'Java'
+  resume: 'Java'
 
 two:
   name: MyString

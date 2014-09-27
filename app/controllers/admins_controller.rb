@@ -1,9 +1,6 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
-  def current_user
-    @_current_user ||= session[:current_user_id] &&
-        Admin.find(session[:current_user_id])
-  end
+
   # GET /admins
   # GET /admins.json
   def index
@@ -18,7 +15,6 @@ class AdminsController < ApplicationController
 
   # GET /admins/new
   def new
-
     @admin = Admin.new
   end
 

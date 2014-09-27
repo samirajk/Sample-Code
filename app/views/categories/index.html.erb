@@ -1,27 +1,41 @@
-<h1>Listing categories</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-  <tbody>
-    <% @categories.each do |category| %>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
+  <center>
+    <h1>Categories</h1>
+
+    <table id="applicationbyjob" class="table table-striped table-bordered">
+      <thead>
       <tr>
-        <td><%= category.category %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Category</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @categories.each do |category| %>
+          <tr>
+            <td><%= category.category %></td>
+            <td><%= link_to 'Show', category %></td>
+            <td><%= link_to 'Edit', edit_category_path(category) %></td>
+            <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Category', new_category_path %>
-<p></p>
-<%= link_to 'Back', admins_path %>
+    <br>
+
+    <%= link_to 'New Category', new_category_path %>
+    <p></p>
+    <%= link_to 'Back', admins_path %>
+  </center>
+</div>

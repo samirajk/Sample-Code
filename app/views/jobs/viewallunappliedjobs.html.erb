@@ -1,35 +1,43 @@
-<% if current_jobseeker%>
-    Logged in as <%= current_jobseeker.username %>.
-    <%= link_to "Log out", log_out_path %>
 
-<% end %>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<h1>Listing jobs</h1>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-<table>
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Application deadline</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-  <tbody>
-  <% @jobs = Job.find_by_sql("select * from jobs EXCEPT select * from jobs where id in (  select job_id from jobapplications where jobseeker_id in (select distinct jobseeker_id FROM jobapplications WHERE  jobseeker_id = #{session[:user_id]} ))") %>
-  <% @jobs.each do |job| %>
+<div class="jumbotron container">
+  <center>
+    <h1>Result</h1>
+
+    <table id="unappliedjobs" class="table table-striped table-bordered">
+      <thead>
       <tr>
-        <td><%= job.title %></td>
-        <td><%= job.description %></td>
-        <td><%= job.application_deadline %></td>
-        <td><%= link_to 'Apply', apply_job_path(job) %></td>
-
+        <th>Title</th>
+        <th>Description</th>
+        <th>Application deadline</th>
+        <th colspan="3"></th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @jobs = Job.find_by_sql("select * from jobs where datetime(application_deadline) >= datetime('now') EXCEPT select * from jobs where id in (  select job_id from jobapplications where jobseeker_id in (select distinct jobseeker_id FROM jobapplications WHERE  jobseeker_id = #{session[:user_id]} ))") %>
+      <% @jobs.each do |job| %>
+          <tr>
+            <td><%= job.title %></td>
+            <td><%= job.description %></td>
+            <td><%= job.application_deadline %></td>
+            <td><%= link_to 'Apply', apply_job_path(job) %></td>
 
-<%= link_to 'Back', searchmyjobs_path %>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'Back', searchmyjobs_path %>
+  </center>
+</div>

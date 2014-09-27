@@ -1,4 +1,13 @@
-<div class="jumbotron">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
 <center>
 <H1>Dire Wolf</H1>
   <div class="col-sm-6"><%= button_to "Job Seeker", jobseeker_log_in_path, :method => "get" ,:class=>"btn btn-primary"%></div>
@@ -7,5 +16,25 @@
   <div class="footer navbar-fixed-bottom">
   <%= button_to "Admin", admin_log_in_path, :method => "get" ,:class=>"btn btn-danger", :style=>"float:right"%>
   </div>
+  <%= form_tag jobsearch_path do %>
+
+      <div class="field">
+        Search</br>
+        <%= text_field_tag "searchcriteria", nil %>
+      </div>
+      <div class="field">
+        <select name="searchcriteria_select">
+
+          <option value="jobtitle">Job Title</option>
+          <option value="jobdescription">Job description(content)</option>
+          <option value="employername">Employer Name</option>
+          <option value="tags">Tags</option>
+
+        </select>
+      </div>
+      <div class="field">
+        <p class="btn"><%= submit_tag "Search" %></p>
+      </div>
+  <% end %>
 </center>
 </div>

@@ -4,13 +4,13 @@
     <data-source source="LOCAL" name="Rails ProjectDireWolf: development" uuid="eb20bd3b-70d9-4a36-a230-e6e12b50a5b8">
       <driver-ref>sqlite.xerial</driver-ref>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Abhishek\RubymineProjects\ProjectDireWolf\db\development.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\sbastik\ProjectDireWolf\db\development.sqlite3</jdbc-url>
       <libraries />
     </data-source>
     <data-source source="LOCAL" name="Rails ProjectDireWolf: test" uuid="70721853-0b31-4c2c-986e-14aeddcbe5b5">
       <driver-ref>sqlite.xerial</driver-ref>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Abhishek\RubymineProjects\ProjectDireWolf\db\test.sqlite3</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\sbastik\ProjectDireWolf\db\test.sqlite3</jdbc-url>
       <libraries />
     </data-source>
   </component>

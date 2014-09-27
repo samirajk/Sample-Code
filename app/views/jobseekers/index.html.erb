@@ -42,8 +42,8 @@
   <tbody>
 
   <% @tags = Tag.find_by_sql("select DISTINCT tag_id from jobtags where job_id in(select job_id from jobapplications where jobseeker_id = #{session[:user_id]})") %>
-  <% @tags.each do |tag| %>
-      <% @jobs = Job.find_by_sql("select DISTINCT * from jobs where id in (select job_id from jobtags where tag_id LIKE '%#{tag.id}%')
+      <% @tags.each do |tag| %>
+      <% @jobs = Job.find_by_sql("select DISTINCT * from jobs where id in (select job_id from jobtags where tag_id LIKE '%#{tag.tag_id}%') AND datetime(application_deadline) >= datetime('now')
 EXCEPT
 select * from jobs where id in (select job_id from jobapplications where jobseeker_id = #{session[:user_id]})") %>
       <% @jobs.each do |job| %>

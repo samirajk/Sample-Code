@@ -1,30 +1,42 @@
-<center>
-  <% if current_employer%>
-      Logged in as <%= current_employer.email %>.
-      <%= link_to "Log out", log_out_path %>
-  <% end %>
-
-<h1>Edit Status</h1>
-
-<%= form_for(@list, :url => {:action => 'update', :id => @list.id}) do |f| %>
-    <div class="field">
-      Title</br>
-      <%= @list.coverletter%>
-    </div>
-    <div class="field">
-      Application Deadline</br>
-      <%= @list.dateofapplication %>
-    </div>
-
-    <div class="field">
-      Status</br>
-      <%= f.select :status,options_for_select({"Applied" => "Applied", "Not Selected" => "Not Selected", "Selected" => "Selected"}) %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Change" %>
-    </div>
+<% if current_employer%>
+    Logged in as <%= current_employer.email %>.
+    <%= link_to "Log out", log_out_path %>
 <% end %>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
+  <center>
 
 
-<%= link_to 'Back', {controller: "jobapplications" , action: "applicationbyjob" , :id => @list.id }  %>
-</center>
+    <h1>Edit Status</h1>
+
+    <%= form_for(@list, :url => {:action => 'update', :id => @list.id}) do |f| %>
+        <div class="field">
+          Title</br>
+          <%= @list.coverletter%>
+        </div>
+        <div class="field">
+          Application Deadline</br>
+          <%= @list.dateofapplication %>
+        </div>
+
+        <div class="field">
+          Status</br>
+          <%= f.select :status,options_for_select({"Applied" => "Applied", "Not Selected" => "Not Selected", "Selected" => "Selected"}) %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Change" %>
+        </div>
+    <% end %>
+
+
+    <%= link_to 'Back', {controller: "jobapplications" , action: "applicationbyjob" , :id => @list.id }  %>
+  </center>
+</div>
