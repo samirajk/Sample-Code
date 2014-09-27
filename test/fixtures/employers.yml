@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  company: MyString
-  contact: MyString
-  email: MyString
-  password_hash: MyString
-  password_salt: MyString
+  company: 'Amazon'
+  contact: 'Kathy'
+  email: 'amazon@amazon.com'
+  password_hash: 'passwordhash'
+  password_salt: 'passwordsalt'
 
 two:
   company: MyString

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  username: MyString
-  password_hash: MyString
-  password_salt: MyString
-  persistence_token: MyString
+  name: 'TestAdmin'
+  username: 'testadmin@direwolf.com'
+  password_hash: 'passwordhash'
+  password_salt: 'passwordsalt'
+  persistence_token: 'persistencetoken'
 
 two:
   name: MyString

@@ -64,7 +64,7 @@ class EmployersController < ApplicationController
   def destroy
     @employer.destroy
     respond_to do |format|
-      format.html { redirect_to employers_url, notice: 'Employer was successfully destroyed.' }
+      format.html { redirect_to employerindexforadmin_path, notice: 'Employer was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
