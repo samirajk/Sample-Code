@@ -13,7 +13,7 @@ class JobsController < ApplicationController
   end
 
   def jobsbyemployer
-    @jobs = Job.where("employer_id = ?", session[:user_id])
+    @jobs = Job.where("employers_id = ?", session[:user_id])
   end
   # GET /jobs/new
   def new
@@ -59,7 +59,7 @@ class JobsController < ApplicationController
 
     tp = job_params
     tp[:tags_id] = job_params[:tags_id].slice(1,job_params[:tags_id].length).join(",")
-    tp[:employer_id] = session[:user_id]
+    tp[:employers_id] = session[:user_id]
 
 
     respond_to do |format|

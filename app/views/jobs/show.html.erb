@@ -1,20 +1,32 @@
 <p id="notice"><%= notice %></p>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-<p>
-  <strong>Application deadline:</strong>
-  <%= @job.application_deadline %>
-</p>
+<div class="jumbotron container">
+  <center>
+    <p>
+      <strong>Title:</strong>
+      <%= @job.title %>
+    </p>
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+    <p>
+      <strong>Description:</strong>
+      <%= @job.description %>
+    </p>
 
+    <p>
+      <strong>Application deadline:</strong>
+      <%= @job.application_deadline %>
+    </p>
+
+    <%= link_to 'Edit', edit_job_path(@job) %> |
+    <%= link_to 'Back', jobs_path %>
+
+  </center>
+</div>

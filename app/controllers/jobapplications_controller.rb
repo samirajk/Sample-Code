@@ -18,7 +18,6 @@ class JobapplicationsController < ApplicationController
     @jobapplications = Jobapplication.all
   end
   def jobseekerindex
-
     @jobapplications = Jobapplication.where("jobseeker_id = ?", session[:user_id])
    # @jobapplications = Jobapplication.find_by_jobseeker_id()
    # @jobapplications = Jobapplication.find_by_jobseeker_id(1)
@@ -58,7 +57,7 @@ class JobapplicationsController < ApplicationController
       @jobapplication.job_id = flash[:job_id].to_i
       @jobapplication.status = "Applied"
       if @jobapplication.save
-        Notifier.send_email_to_employer(@jobapplication.job.employer.email,@jobapplication.job.title).deliver
+        Notifier.send_email_to_employer(Employer.find(@jobapplication.job.employers_id).email,@jobapplication.job.title).deliver
         format.html { redirect_to @jobapplication, notice: 'Job application was successfully created.' }
         format.json { render :show, status: :created, location: @jobapplication }
       else
@@ -84,7 +83,7 @@ class JobapplicationsController < ApplicationController
       else
         if @jobapplication.update(jobapplication_params)
           #send status update mail
-          Notifier.send_email_to_applicant(@jobapplication.jobseeker.username,@jobapplication.job.title,@jobapplication.job.employer.company).deliver
+          Notifier.send_email_to_applicant(@jobapplication.jobseeker.username,@jobapplication.job.title,Employer.find(@jobapplication.job.employers_id).company).deliver
           flash[:notice] = 'Successfully Changed !'
           format.html { redirect_to controller: "jobapplications" , action: "applicationbyjob" , :id =>  @jobapplication.job.id }
           format.json { render :show, status: :ok, location: @jobapplication }

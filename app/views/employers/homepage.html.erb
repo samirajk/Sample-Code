@@ -1,5 +1,18 @@
-<center>
-<%= link_to 'Create Job', new_job_path %>
-<%= link_to 'Create Tags', new_tag_path %>
-<%= link_to 'Show Jobs', :controller => "jobs", :action => "jobsbyemployer" %>
-</center>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
+  <center>
+    <H1>Welcome</H1>
+
+    <div class="col-sm-4"><%= button_to "Create Job", new_job_path, :method => "get" ,:class=>"btn btn-primary"%></div>
+    <div class="col-sm-4"><%= button_to "Create Tags", new_tag_path, :method => "get" ,:class=>"btn btn-primary"%></div>
+    <div class="col-sm-4"><%= button_to "Show Jobs", my_jobs_path, :method => "get" ,:class=>"btn btn-primary"%></div>
+  </center>
+</div>

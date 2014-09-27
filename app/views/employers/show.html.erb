@@ -1,37 +1,39 @@
 <p id="notice"><%= notice %></p>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<p>
-  <strong>Company:</strong>
-  <%= @employer.company %>
-</p>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-<p>
-  <strong>Contact:</strong>
-  <%= @employer.contact %>
-</p>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-<p>
-  <strong>Email:</strong>
-  <%= @employer.email %>
-</p>
+<div class="jumbotron container">
+  <center>
+    <p>
+      <strong>Company:</strong>
+      <%= @employer.company %>
+    </p>
 
-<p>
-  <strong>Password hash:</strong>
-  <%= @employer.password_hash %>
-</p>
+    <p>
+      <strong>Contact:</strong>
+      <%= @employer.contact %>
+    </p>
 
-<p>
-  <strong>Password salt:</strong>
-  <%= @employer.password_salt %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @employer.email %>
+    </p>
 
-<%= link_to 'Edit', edit_employer_path(@employer) %> |
+    <%= link_to 'Edit', edit_employer_path(@employer) %> |
 
-<% if current_user %>
-    <%= current_employer = nil %>
-    <%= link_to 'Back', employerindexforadmin_path %>
-<% end %>
+    <% if current_user %>
+        <%= current_employer = nil %>
+        <%= link_to 'Back', employerindexforadmin_path %>
+    <% end %>
 
-<% if current_employer %>
-<%= link_to 'Back', employers_path %>
-<% end %>
+    <% if current_employer %>
+        <%= link_to 'Back', employers_path %>
+    <% end %>
+  </center>
+</div>

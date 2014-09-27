@@ -2,7 +2,7 @@ class EmployersController < ApplicationController
   before_action :set_employer, only: [:show, :edit, :update, :destroy]
   # GET /employers
   # GET /employers.json
-
+  layout 'employer'
   def index
     @employers = Employer.all
   end

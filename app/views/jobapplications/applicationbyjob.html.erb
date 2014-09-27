@@ -1,31 +1,43 @@
-<center>
-<h1>Job Applications</h1>
 
-<table>
-  <thead>
-  <tr>
-    <th>Cover</th>
-    <th>Date</th>
-    <th>Status</th>
-    <th>Applicant</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-  <tbody>
-  <% @list.each do |jobapplication| %>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
+  <center>
+    <h1>Job Applications</h1>
+
+    <table id="applicationbyjob" class="table table-striped table-bordered">
+      <thead>
       <tr>
-        <td><%= jobapplication.coverletter %></td>
-        <td><%= jobapplication.dateofapplication %></td>
-        <td><%= jobapplication.status %></td>
-        <td><%= link_to jobapplication.jobseeker.name,{controller: "jobseekers" , action: "view" , :id => jobapplication.jobseeker.id, :jobid => jobapplication.job.id}%></td>
-        <td><%= link_to 'Change Status', {controller: "jobapplications" , action: "editstatus" , :id => jobapplication.id }%></td>
+        <th>Cover</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Applicant</th>
+        <th colspan="3"></th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @list.each do |jobapplication| %>
+          <tr>
+            <td><%= jobapplication.coverletter %></td>
+            <td><%= jobapplication.dateofapplication %></td>
+            <td><%= jobapplication.status %></td>
+            <td><%= link_to jobapplication.jobseeker.name,{controller: "jobseekers" , action: "view" , :id => jobapplication.jobseeker.id, :jobid => jobapplication.job.id}%></td>
+            <td><%= link_to 'Change Status', {controller: "jobapplications" , action: "editstatus" , :id => jobapplication.id }%></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'Back', my_jobs_path %>
- </center>
+    <br>
+
+    <%= link_to 'Back', my_jobs_path %>
+  </center>
+</div>

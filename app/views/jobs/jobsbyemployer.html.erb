@@ -1,32 +1,42 @@
-<center>
-<h1>Your Jobs</h1>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 
-<table>
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Application deadline</th>
-    <th colspan="3"></th>
-  </tr>
-  </thead>
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
-  <tbody>
-  <% @jobs.each do |job| %>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
+  <center>
+    <h1>Your Jobs</h1>
+
+    <table id="myjobs" class="table table-striped table-bordered">
+      <thead>
       <tr>
-        <td><%= job.title %></td>
-        <td><%= job.description %></td>
-        <td><%= job.application_deadline %></td>
-        <td><%= link_to 'Show Applications', {controller: "jobapplications" , action: "applicationbyjob" , :id => job.id }%></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Application deadline</th>
+        <th colspan="3"></th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @jobs.each do |job| %>
+          <tr>
+            <td><%= job.title %></td>
+            <td><%= job.description %></td>
+            <td><%= job.application_deadline %></td>
+            <td><%= link_to 'Show Applications', {controller: "jobapplications" , action: "applicationbyjob" , :id => job.id }%></td>
+            <td><%= link_to 'Edit', edit_job_path(job) %></td>
+            <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Job', new_job_path %>
-<%= link_to 'Back', emp_homepage_path %>
-</center>
+    <br>
+
+    <%= link_to 'New Job', new_job_path %> |
+    <%= link_to 'Back', emp_homepage_path %>
+  </center>
+</div>

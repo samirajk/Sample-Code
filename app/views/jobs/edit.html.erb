@@ -1,38 +1,50 @@
-<center>
-<h1>Editing job</h1>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<div class="jumbotron container">
+  <center>
+    <h1>Editing job</h1>
 
 
     <%= form_for(@job, :url => {:action => 'update', :id => @job.id}) do |f| %>
-    <div class="field">
-      Title</br>
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      Description</br>
-      <%= f.text_field :description %>
-    </div>
+        <div class="field">
+          Title</br>
+          <%= f.text_field :title %>
+        </div>
+        <div class="field">
+          Description</br>
+          <%= f.text_field :description %>
+        </div>
 
-    <div class="field">
-      Application Deadline</br>
-      <%= f.datetime_select :application_deadline %>
-    </div>
+        <div class="field">
+          Application Deadline</br>
+          <%= f.datetime_select :application_deadline %>
+        </div>
 
-    <div class="field">
-      Category
-      <% options = options_from_collection_for_select(@category, 'id', 'category') %>
-      <%= f.select(:category_id, @category.map{ |category| [category.category, category.id] }) %>
-    </div>
+        <div class="field">
+          Category
+          <% options = options_from_collection_for_select(@category, 'id', 'category') %>
+          <%= f.select(:category_id, @category.map{ |category| [category.category, category.id] }) %>
+        </div>
 
-    <div class="field">
-     Tags
-     <%= f.select(:tags_id, @tags.all.collect {|x| [x.tag, x.id]},{},:multiple => true,:allow_blank => false) %>
-    </div>
+        <div class="field">
+          Tags
+          <%= f.select(:tags_id, @tags.all.collect {|x| [x.tag, x.id]},{},:multiple => true,:allow_blank => false) %>
+        </div>
 
-    <div class="actions">
-      <%= f.submit %>
-    </div>
-<% end %>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+    <% end %>
 
-<%= link_to 'Back', my_jobs_path %>
+    <%= link_to 'Back', my_jobs_path %>
 
-</center>
+  </center>
+</div>
