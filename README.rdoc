@@ -1,19 +1,24 @@
 DIREWOLF README
 --------------------------------------------------------
 SuperAdmin:<CANNOT BE DELETED FOR REVIEW PURPOSES>
+
 username:admin@direwolf.com
 password:admin	
 
 
 Employer:<CANNOT BE DELETED FOR REVIEW PURPOSES>
+
 username: kathy@amazon.com	
 Password: kathy
 
 ====================IMPORTANT===========================
 >While creating a job, make sure that you put the deadline atleast a day ahead of the current date. 
 (Direwolf does not list jobs whose deadlines have already crossed the current date)
+
 >The list of jobs on the HOME PAGE appears when you select the appropriate criteria and click search.
+
 >Emails are work in the development environment but might not work in the production environment.
+
 
 ========================================================
 
