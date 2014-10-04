@@ -1,28 +1,33 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+DIREWOLF README
+--------------------------------------------------------
+SuperAdmin:<CANNOT BE DELETED FOR REVIEW PURPOSES>
+username:admin@direwolf.com
+password:admin	
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Employer:<CANNOT BE DELETED FOR REVIEW PURPOSES>
+username: kathy@amazon.com	
+Password: kathy
+
+====================IMPORTANT===========================
+>While creating a job, make sure that you put the deadline atleast a day ahead of the current date. 
+(Direwolf does not list jobs whose deadlines have already crossed the current date)
+>The list of jobs on the HOME PAGE appears when you select the appropriate criteria and click search.
+>Emails are work in the development environment but might not work in the production environment.
+
+========================================================
+
+
+---------------------------------------------------------
+Extra Features:
+- Email sent to the employer when jobseeker applies to his job.
+- Email sent to the jobseeker when employer changes the job status of the applied job.
+- Bootstrap css
+- Jobs for which the application deadline has crossed are not displayed.
+- Cucumber test 
+
+---------------------------------------------------------
+
+Future plans: 
+- Prevent direct URL access to pages
+- Will try to add a few more cucumber tests
