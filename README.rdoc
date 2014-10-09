@@ -1,5 +1,8 @@
 DIREWOLF README
 --------------------------------------------------------
+ADMIN BUTTON LOCATED IN THE BOTTOM RIGHT CORNER OF THE SCREEN
+
+
 SuperAdmin:<CANNOT BE DELETED FOR REVIEW PURPOSES>
 
 username:admin@direwolf.com
